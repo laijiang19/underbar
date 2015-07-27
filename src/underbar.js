@@ -105,6 +105,20 @@
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
+
+    var res = [];
+    var unique = {};
+
+    _.each(array,function(item){
+      unique[item] = item;
+    });
+
+    _.each(unique,function(item){
+      res.push(unique[item]);
+    });
+
+    return res;
+
   };
 
 
