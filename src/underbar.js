@@ -177,6 +177,21 @@
   //   }); // should be 5, regardless of the iterator function passed in
   //          No accumulator is given so the first element is used.
   _.reduce = function(collection, iterator, accumulator) {
+
+    var paramCheck = accumulator === undefined;
+
+    _.each(collection,function(item){
+      if (paramCheck){
+        accumulator = item;
+        paramCheck = false;
+      }
+      else {
+        accumulator = iterator(accumulator,item);
+      }
+    });
+
+    return accumulator;
+
   };
 
   // Determine if the array or object contains a given value (using `===`).
