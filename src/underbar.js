@@ -328,6 +328,16 @@
   // input array. For a tip on how to make a copy of an array, see:
   // http://mdn.io/Array.prototype.slice
   _.shuffle = function(array) {
+    var res = [];
+    var length = array.length;
+    _.each(array,function(item){
+      var i = -1;
+      while (i===-1 || res[i]!==undefined){
+        i = Math.floor(Math.random()* (length+1));
+      }
+      res[i] = item;
+    });
+    return res;
   };
 
 
