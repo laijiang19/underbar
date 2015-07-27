@@ -294,6 +294,12 @@
   // already computed the result for the given argument and return that value
   // instead if possible.
   _.memoize = function(func) {
+    var storage = {};
+
+    return function(){
+      var key = arguments[0];
+      return storage[key] === undefined ? storage[key]=func.apply(this,arguments) : storage[key];
+    }
   };
 
   // Delays a function for the given number of milliseconds, and then calls
