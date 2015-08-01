@@ -110,7 +110,7 @@
       unique[item] = item;
     });
     _.each(unique,function(item){
-      res.push(unique[item]);
+      res.push(item);
     });
     return res;
   };
@@ -233,8 +233,8 @@
   //   }); // obj1 now contains key1, key2, key3 and bla
   _.extend = function(obj) {
     for (var i=1; i<arguments.length; i++){
-      _.each(arguments[i],function(item,prop){
-        obj[prop]=item;
+      _.each(arguments[i],function(item,key){
+        obj[key]=item;
       })
     }
     return obj;
@@ -295,10 +295,8 @@
   // instead if possible.
   _.memoize = function(func) {
     var storage = {};
-
-    return function(){
-      var key = arguments[0];
-      return storage[key] === undefined ? storage[key]=func.apply(this,arguments) : storage[key];
+    return function(arg){
+      return storage[arg]===undefined ? storage[arg]=func.apply(this,arguments):storage[arg];
     }
   };
 
