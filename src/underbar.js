@@ -401,6 +401,18 @@
   // Example:
   // _.zip(['a','b','c','d'], [1,2,3]) returns [['a',1], ['b',2], ['c',3], ['d',undefined]]
   _.zip = function() {
+
+    var length = arguments[0].length;
+    for (var i=1; i<arguments.length; i++){
+      length = Math.max(arguments[i].length,length);
+    }
+    var res = new Array(length);
+    for (i=0; i<length; i++){
+      res[i] = _.pluck(arguments,i);
+    }
+
+    return res;
+
   };
 
   // Takes a multidimensional array and converts it to a one-dimensional array.
@@ -430,6 +442,7 @@
   // Takes an arbitrary number of arrays and produces an array that contains
   // every item shared between all the passed-in arrays.
   _.intersection = function() {
+
   };
 
   // Take the difference between one array and a number of other arrays.
