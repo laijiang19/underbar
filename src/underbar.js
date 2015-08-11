@@ -408,6 +408,23 @@
   //
   // Hint: Use Array.isArray to check if something is an array
   _.flatten = function(nestedArray, result) {
+    if (result){
+      return _.reduce(nestedArray,function(res,current){
+       return res.concat(current); 
+      },[]);
+    }
+    else {
+      var res = [];
+      if (!Array.isArray(nestedArray)){
+        return nestedArray;
+      }
+      else {
+        _.each(nestedArray,function(item){
+          res = res.concat(_.flatten(item));
+        });
+      }
+      return res;
+    }
   };
 
   // Takes an arbitrary number of arrays and produces an array that contains
