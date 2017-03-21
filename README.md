@@ -1,2 +1,2 @@
 #underbar
-This is a project I completed as a student at [Hack Reactor Remote Beta](http://www.hackreactor.com/remote-beta). This project was worked on with a pair.
+This is my implementation of the famous library Underscore.
